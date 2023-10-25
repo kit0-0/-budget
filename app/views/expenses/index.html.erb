@@ -1,3 +1,5 @@
+
+<div class="expen-container">
 <%= render "shared/head", title: 'Expenses', back: true %>
 
 <div class="alert-section">
@@ -49,8 +51,9 @@
       </ul>
     <% end %>
   </div>
-
-  <div class="add-category-container d-flex justify-content-center px-3 py-4">
+<div class="mt-auto">
+  <div class="add-category-container mt- d-flex justify-content-center px-3 py-4">
     <%= link_to "ADD EXPENSE", new_category_expense_path(category_id: @category.id), class: 'btn btn-outline-light btn-lg text-white py-3' %>
   </div>
-
+</div>
+</div>
