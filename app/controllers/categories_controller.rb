@@ -16,9 +16,9 @@ class CategoriesController < ApplicationController
     @category = current_user.categories.build(categories_params)
 
     if @category.save
-      redirect_to categories_path, notice: 'Expense category was successfully created.' # Updated notice message
+      redirect_to categories_path, notice: 'Expense category was successfully created.'
     else
-      flash.now[:alert] = 'Cannot create a new expense category.' # Updated alert message
+      flash.now[:alert] = 'Cannot create a new expense category.'
       render :new
     end
   end
@@ -28,7 +28,7 @@ class CategoriesController < ApplicationController
   def destroy
     @category = current_user.categories.find(params[:id])
     @category.destroy
-    redirect_to categories_path, alert: 'Expense category deleted successfully.' # Updated alert message
+    redirect_to categories_path, alert: 'Expense category deleted successfully.
   end
 
   private
