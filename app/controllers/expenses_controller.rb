@@ -9,12 +9,25 @@ class ExpensesController < ApplicationController
 
   def new
     @category = Category.find(params[:category_id])
-    @expense = Expense.new
+    @expense = @category.expenses.build(category_ids: [@category.id])
     @categories = Category.all
   end
 
   def create
-    @category = Category.find(params[:category_id])
+    @category = Category.find_by(id: params[:category_id])
+
+    if @category.nil?
+      redirect_to root_path, alert: 'Category not found'
+      return
+    end
+
+    @categories = Category.all
+
+    if @categories.empty?
+      redirect_to root_path, alert: 'No categories available'
+      return
+    end
+
     @expense = @category.expenses.build(expense_params)
 
     if @expense.save

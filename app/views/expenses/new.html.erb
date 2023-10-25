@@ -10,25 +10,24 @@
         
     <div class="form-container">
       <%= form_with model: [@category, @expense], url: category_expenses_path(@category), method: :post do |form| %>
-        <div class="border p-5 vh-80">
-          <%= form.text_field :name, required: true, placeholder: "Enter New Expense", class: 'form-control mb-5' %>
-          <%= form.number_field :amount, required: true, placeholder: "Amount (USD)", class: 'form-control' %>
+  <div class="border p-5 vh-80">
+    <%= form.text_field :name, required: true, placeholder: "Enter New Expense", class: 'form-control mb-5' %>
+    <%= form.number_field :amount, required: true, placeholder: "Amount (USD)", class: 'form-control' %>
 
-          <div class="mb-3">
-            <label class="form-label">Select Categories (at least one)</label>
-            <% @categories.each do |category| %>
-              <div class="form-check">
-                <%= form.check_box :category_ids, { multiple: true, class: 'form-check-input' }, category.id, nil %>
-                <%= form.label "expense_category_#{category.id}", category.name, class: 'form-check-label' %>
-              </div>
-            <% end %>
-          </div>
-        </div>
-
-        <div class="add-category-container d-flex justify-content-center px-5 py-7">
-          <%= form.submit "Create Expense", class: 'btn btn-outline-light my-2 btn-lg w-80 text-uppercase' %>
-        </div>
+    <div class="mb-3">
+      <label class="form-label">Select Categories (at least one)</label>
+      <%= form.collection_check_boxes :category_ids, @categories, :id, :name, checked: @expense.category_ids, class: 'form-check-input' do |cb| %>
+        <%= cb.check_box %>
+        <%= cb.label %>
       <% end %>
+    </div>
+  </div>
+
+  <div class="add-category-container d-flex justify-content-center px-5 py-7">
+    <%= form.submit "Create Expense", class: 'btn btn-outline-light my-2 btn-lg w-80 text-uppercase' %>
+  </div>
+<% end %>
+
     </div>
   </div>
 </section>
