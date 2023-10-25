@@ -8,7 +8,7 @@ services:
   - type: web
     name: budget
     env: ruby
-    buildCommand: "./render-build.sh"
+    buildCommand: "./bin/render-build.sh"
     startCommand: "bundle exec puma -C config/puma.rb"
     envVars:
       - key: DATABASE_URL
