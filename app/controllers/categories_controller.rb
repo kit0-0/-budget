@@ -28,7 +28,7 @@ class CategoriesController < ApplicationController
   def destroy
     @category = current_user.categories.find(params[:id])
     @category.destroy
-    redirect_to categories_path, alert: 'Expense category deleted successfully.
+    redirect_to categories_path, alert: 'Expense category deleted successfully.'
   end
 
   private

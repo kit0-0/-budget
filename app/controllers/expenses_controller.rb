@@ -30,15 +30,14 @@ class ExpensesController < ApplicationController
     @expense.categories.each do |category|
       category.category_expenses.find_by(expense_id: @expense.id).destroy
     end
-  
+
     @expense.destroy
     redirect_to category_expenses_path(category_id: params[:category_id]), alert: 'Expense deleted successfully.'
   end
-    
+
   private
 
   def expense_params
     params.require(:expense).permit(:name, :amount, category_ids: []).merge(author_id: current_user.id)
   end
-
 end
