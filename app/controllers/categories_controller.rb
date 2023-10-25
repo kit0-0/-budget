@@ -13,12 +13,14 @@ class CategoriesController < ApplicationController
   end
 
   def create
-    @category = current_user.categories.build(categories_params)
+    icon = categories_params[:icon].presence || ICON_OPTIONS.first
+
+    @category = current_user.categories.build(categories_params.merge(icon:))
 
     if @category.save
       redirect_to categories_path, notice: 'Expense category was successfully created.'
     else
-      flash.now[:alert] = 'Cannot create a new expense category.'
+      flash.now[:alert] = 'Try again. Cannot create a new expense category.'
       render :new
     end
   end
