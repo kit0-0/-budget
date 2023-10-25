@@ -47,6 +47,12 @@
   background-color: var(--secondary-color);
 }
 
+.category-container {
+  min-height: 70vh;
+  display: flex;
+  flex-direction: column;
+}
+
 #category_icon {
   padding: 10px;
   display: block;
