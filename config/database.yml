@@ -4,7 +4,7 @@ default: &default
   host: localhost
   pool: 5
   username: postgres
-  password: your_password
+  password: kiko
 
 development:
   <<: *default
@@ -16,6 +16,7 @@ test:
 
 production:
   <<: *default
+  url: <%= ENV['DATABASE_URL'] %>
   database: budget_app_production
   username: budget_app_production
   password: <%= ENV['BUDGET_APP_DATABASE_PASSWORD'] %>
