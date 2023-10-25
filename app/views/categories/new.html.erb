@@ -1,0 +1,23 @@
+<section class="category-section">
+    <div>
+        <%= render "shared/head", title: "add category", back: true %>
+    </div>
+    <% if flash[:notice].present? %>
+        <div class="notice">
+            <%= flash[:notice] %>
+        </div>
+    <% end %>
+
+    <div class="form-container">
+        <%= form_with model: @category do |form| %>
+            <div class="border p-3 p-md-5">
+                <%= form.text_field :name, required: true, placeholder: "Enter New Category", class: 'form-control' %>
+                <%= form.select :icon, options_for_select(@options, selected: @category.icon), { prompt: "Select an icon" }, class: 'form-select mb-3' %>
+            </div>
+
+            <div class="add-category-container d-flex justify-content-center px-3 px-md-5 py-3 py-md-5">
+                <%= form.submit "Create category", class: 'btn btn-primary btn-lg w-80' %>
+            </div>
+        <% end %>
+    </div>
+</section>

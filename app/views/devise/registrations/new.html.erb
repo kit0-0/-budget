@@ -1,0 +1,30 @@
+<%= render 'shared/head', title: 'register', back: true %>
+<div class="container-fluid vh-100 pt-10">
+  <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { class: 'form' }) do |f| %>
+    <%= render "devise/shared/error_messages", resource: resource %>
+    <div class="row">
+      <div class="col-md-6 mx-auto">
+        <div class="mb-3 py-3">
+          <%= f.text_field :name, autofocus: true, autocomplete: "name", placeholder: 'Full Name', class: 'form-control py-2 border-bottom mx-auto' %>
+        </div>
+
+        <div class="mb-3 py-3">
+          <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: 'Email', class: 'form-control py-2 border-bottom mx-auto' %>
+        </div>
+
+        <div class="mb-3 py-3">
+          <%= f.password_field :password, autocomplete: "new-password", placeholder: 'Password', class: 'form-control py-2 border-bottom mx-auto' %>
+        </div>
+
+        <div class="pt-3">
+          <%= f.password_field :password_confirmation, autocomplete: "new-password", placeholder: 'Confirm Password', class: 'form-control py-2 border-bottom mx-auto' %>
+        </div>
+      </div>
+    </div>
+
+    <div class="actions d-flex justify-content-center px-5 py-7 sign-up-container mt-5 py-3">
+  <%= f.submit "Sign up", class: 'btn btn-outline-light text-center py-3' %>
+</div>
+
+  <% end %>
+</div>
